@@ -1,47 +1,98 @@
+Skip to content
+Chat history
+
+You said:
+file:///Users/juanjosetrejos/Downloads/Unit-1%20Assignment.html
+ChatGPT said:
+It looks like you're trying to share a local file (file:///Users/juanjosetrejos/Downloads/Unit-1%20Assignment.html). Unfortunately, I can't access files from your computer directly through a file:// link.
+
+If you'd like me to help with that HTML file, you can:
+
+Copy and paste the HTML code here
+– I'll review or modify it as needed.
+
+Upload the file directly into this chat
+– Click the paperclip 📎 icon and upload the .html file so I can open and work with it.
+
+Let me know how you'd like to proceed!
+
+You said:
+Unit-1 Assignment.html
+File
+ChatGPT said:
+Your HTML file is mostly set up correctly, but a few fixes and additions are needed to complete the assignment tasks. Here's a corrected and updated version with:
+
+An <h1> element inserted by JavaScript.
+
+Your name and major displayed both on the page and in the console.
+
+The Alert function corrected to lowercase alert().
+
+✅ Updated HTML with working JavaScript:
 <!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>WDV221 Intro Javascript</title>
+  <meta charset="utf-8" />
+  <title>WDV221 Intro Javascript</title>
 
-<style>
+  <style>
+    div#container {
+      width: 960px;
+      margin: auto;
+      padding: 10px;
+      background-color: white;
+      border: thin solid black;
+    }
+  </style>
 
-div#container	{
-	width:960px;
-	margin:auto;
-	padding:10px;
-	background-color:white;	
-	border:thin solid black;
-}
+  <script>
+    // 1. Output an h1 element that says 'Assignment 1'
+    document.addEventListener("DOMContentLoaded", function() {
+      const header = document.createElement("h1");
+      header.textContent = "Assignment 1";
+      document.getElementById("container").appendChild(header);
 
+      // 2. Display name and major on the page and in the console
+      const nameMajor = document.createElement("p");
+      nameMajor.textContent = "Name: Juanjo Trejos, Major: Computer Information Systems";
+      document.getElementById("container").appendChild(nameMajor);
+      console.log("Name: Juanjo Trejos, Major: Computer Information Systems");
 
-</style>
-
-<script>		//1. Modify this run time script to output an h1 element that says 'Assignment 1'
-
-</script>
-
-
-
+      // 3. Correct the alert function
+      alert("You are on your way to working with Javascript");
+    });
+  </script>
 </head>
 
 <body>
-<div id="container">
-
+  <div id="container">
     <h1>WDV221 Intro Javascript</h1>
     <h2>Introduction to Javascript - Assignment 1</h2>
 
     <p>Tasks:</p>
     <p>1. The instructions are in the code.</p>
-    <p>2. Create a run time script that will display your name and major on the page AND on the console log.</p>  
-	<p>3. Fix the run time script on the bottom of this page.</p>
-    
-    <script>
-	
-		Alert('You are on your way to working with Javascript');
-	
-	</script>
-    
-</div>
-
+    <p>2. Create a run time script that will display your name and major on the page AND on the console log.</p>
+    <p>3. Fix the run time script on the bottom of this page.</p>
+  </div>
 </body>
 </html>
+🧪 How to Test:
+Save this code in a .html file.
+
+Open it in a browser.
+
+You should see a new <h1> that says "Assignment 1", your name and major, and a popup alert.
+
+Check the browser console (F12) to confirm the message is logged there.
+
+Let me know if you want the file version re-uploaded!
+
+Do you like this personality?
+
+
+
+
+
+
+No file chosenNo file chosen
+ChatGPT can make mistakes. Check important info.
