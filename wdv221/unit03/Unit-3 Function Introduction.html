@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WDV221 Intro Javascript - Function Introduction Assignment</title>
+
+<style>
+
+body {background-color:#d9eff6;
+}
+
+.highlightTitle	{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-style:italic;
+	font-size:14px;
+	text-decoration:underline;
+	color:#096;
+}
+
+
+</style>
+</head>
+
+<body>
+<h2>WDV221 Intro Javascript</h2>
+<h3>Unit-3 - Functions </h3>
+<hr />
+<p>Please complete the following exercises on this page. When complete post this page to your  server. Make a link in your WDV221 homework  page for this assignment.</p>
+<p>Submit this assignment on Blackboard. Please include a link to your homework page.</p>
+<hr />
+
+<button onclick="characterCount()">Click to Count Characters</button>
+
+<script>
+// 1. Global variable
+var myName = "Juanjo Guitarist";
+
+// 2. sayHello() function with alert
+function sayHello() {
+  alert("Hello, my name is " + myName);
+}
+sayHello();  // Called during runtime
+
+// 3. printHello() function with document.write()
+function printHello() {
+  document.write("Hello from " + myName + "<br>");
+}
+printHello();  // First call
+printHello();  // Second call
+
+// 4. Call printHello() with h1 tag
+document.write("<h1>");
+printHello();
+document.write("</h1>");
+
+// 5. characterCount() function
+function characterCount() {
+  var testString = prompt("Enter a string:");
+  var length = testString.length;
+  alert("The string has " + length + " characters.");
+}
+</script>
+
+
+</body>
+</html>
