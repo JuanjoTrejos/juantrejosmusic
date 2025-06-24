@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Handlers Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    #colorBox {
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+      line-height: 200px;
+      text-align: center;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    select {
+      padding: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body onload="pageLoaded()">
+
+  <h1>Event Handlers Assignment</h1>
+
+  <!-- onmouseover / onmouseout via HTML -->
+  <div id="colorBox" onmouseover="hoverEffect()" onmouseout="removeEffect()">Hover Me</div>
+
+  <!-- onclick via HTML -->
+  <button onclick="showAlert()">Click Me!</button>
+
+  <br><br>
+
+  <!-- onchange via HTML -->
+  <label for="colorSelect">Choose a background color:</label>
+  <select id="colorSelect" onchange="changeBackground(this.value)">
+    <option value="">Select color</option>
+    <option value="lightgreen">Light Green</option>
+    <option value="lightcoral">Light Coral</option>
+    <option value="lightyellow">Light Yellow</option>
+  </select>
+
+  <script>
+    // onload handler
+    function pageLoaded() {
+      console.log("Page loaded successfully.");
+    }
+
+    // onclick function
+    function showAlert() {
+      alert("Button was clicked!");
+    }
+
+    // onmouseover function
+    function hoverEffect() {
+      const box = document.getElementById('colorBox');
+      box.style.backgroundColor = 'orange';
+      box.textContent = "Mouse Over!";
+    }
+
+    // onmouseout function
+    function removeEffect() {
+      const box = document.getElementById('colorBox');
+      box.style.backgroundColor = 'lightblue';
+      box.textContent = "Hover Me";
+    }
+
+    // onchange function
+    function changeBackground(color) {
+      document.body.style.backgroundColor = color;
+    }
+
+    // onclick via JavaScript
+    const box = document.getElementById('colorBox');
+    box.addEventListener('click', function() {
+      console.log("Box was clicked using JS Event Listener.");
+    });
+  </script>
+
+</body>
+</html>
