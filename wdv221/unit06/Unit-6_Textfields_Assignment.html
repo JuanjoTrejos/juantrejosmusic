@@ -1,0 +1,111 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WDV221 Intro Javascript - Operators and Textfields Assignment</title>
+
+<style>
+body {
+  background-color:#d5c2c2;
+}
+.highlightTitle {
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-style:italic;
+  font-size:14px;
+  text-decoration:underline;
+  color:#096;
+}
+</style>
+
+<script>
+// Global variable for Exercise 5
+let count = 0;
+
+// Exercise 1: Display value1
+function displayValue1() {
+  const val1 = document.getElementById("value1").value;
+  document.getElementById("output1").value = val1;
+}
+
+// Exercise 2: Display value2
+function displayValue2() {
+  const val2 = document.getElementById("value2").value;
+  document.getElementById("output2").value = val2;
+}
+
+// Exercise 3: Multiply value1 * value2
+function multiplyValues() {
+  const val1 = parseFloat(document.getElementById("value1").value);
+  const val2 = parseFloat(document.getElementById("value2").value);
+  document.getElementById("output3").value = val1 * val2;
+}
+
+// Exercise 4: Add value1 + value2
+function addValues() {
+  const val1 = parseFloat(document.getElementById("value1").value);
+  const val2 = parseFloat(document.getElementById("value2").value);
+  document.getElementById("output4").value = val1 + val2;
+}
+
+// Exercise 5: Increment count
+function incrementCount() {
+  count++;
+  document.getElementById("output5").value = count;
+}
+</script>
+
+</head>
+
+<body>
+<h2>WDV221 Intro Javascript</h2>
+<h3>Unit-6 Operators and Textfields - Assignment</h3>
+<hr />
+<p>Complete the following exercises. Each button will trigger a JavaScript function that performs the operation.</p>
+<hr />
+
+<form name="form1" onsubmit="return false;">
+  <p>Enter a number for value1:
+    <input type="text" id="value1" />
+  </p>
+  <p>Enter a number for value2:
+    <input type="text" id="value2" />
+  </p>
+
+  <p>1.
+    <button type="button" onclick="displayValue1()">Display value1</button>
+    Display the value you entered for value1:
+    <input type="text" id="output1" readonly />
+  </p>
+
+  <p>2.
+    <button type="button" onclick="displayValue2()">Display value2</button>
+    Display the value you entered for value2:
+    <input type="text" id="output2" readonly />
+  </p>
+
+  <p>3.
+    <button type="button" onclick="multiplyValues()">Multiply</button>
+    Display the value of value1 * value2:
+    <input type="text" id="output3" readonly />
+  </p>
+
+  <p>4.
+    <button type="button" onclick="addValues()">Add</button>
+    Display the results of value1 + value2:
+    <input type="text" id="output4" readonly />
+  </p>
+
+  <p>5.
+    <button type="button" onclick="incrementCount()">Increment count</button>
+    Display the incremented count:
+    <input type="text" id="output5" readonly />
+  </p>
+
+  <p>
+    <input type="reset" name="Reset" value="Reset">
+  </p>
+</form>
+
+</body>
+</html>
