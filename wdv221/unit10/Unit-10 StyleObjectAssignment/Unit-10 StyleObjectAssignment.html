@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WDV221 Style Object-CSS Interactions In Class Exercises</title>
+<style type="text/css">
+.style1 {color: #FF0000}
+    .border {
+      border: 2px solid black;
+      padding: 10px;
+    }
+</style>
+</head>
+
+<body>
+  <h1>WDV221 Intro Javascript</h1>
+  <h3 id="subheading">Style Object - CSS Interactions - In Class Exercises</h3>
+  
+  <p id="para1" onclick="this.style.color='red'">1. Click this paragraph to change the font color to red.</p>
+  
+  <p id="para2" onmouseover="document.getElementById('subheading').style.textAlign='center'">
+    2. Mouseover this paragraph to center the H3 element containing "CSS Interactions".
+  </p>
+  
+  <p>3. Click the button to left align the H3 element. </p>
+  <button onclick="document.getElementById('subheading').style.textAlign='left'">Align Left</button>
+  
+  <p id="para4" 
+     onmouseover="this.style.fontFamily='Courier New'" 
+     onclick="this.style.fontFamily=''">
+     4. Mouseover this paragraph to change the font to Courier New. <br>
+     5. Click on this paragraph to return the font to the default font.
+  </p>
+  
+  <p>6. Click on the button to make the word <span id="saleText">SALE</span> font size 24px.</p>
+  <button onclick="document.getElementById('saleText').style.fontSize='24px'">Enlarge SALE</button>
+  
+  <p>7. Click on the button to return the word to its original size.</p>
+  <button onclick="document.getElementById('saleText').style.fontSize=''" >Reset SALE</button>
+  
+  <p id="para8" onclick="this.style.backgroundColor='yellow'">
+    8. Click this paragraph to make the background color yellow.
+  </p>
+  
+  <p id="para9" onclick="document.getElementById('frogImg').style.display='none'">
+    9. Click this paragraph to hide the Frog image shown below.
+  </p>
+  
+  <p>10. Use the following button to make the Frog image shown below reappear.</p>
+  <button onclick="document.getElementById('frogImg').style.display='inline'">Show Frog</button>
+  
+  <p>11. Mouseover the Frog image to make its height and width double its original size.</p>
+  <img src="frog.jpg" width="100" height="100" id="frogImg"
+       onmouseover="this.style.width='200px'; this.style.height='200px';"
+       onclick="this.style.width='100px'; this.style.height='100px';"
+       alt="Frog image" />
+  
+  <p>12. Click on the Frog image to make it return to original size.</p>
+  
+  <p id="interactionParagraph13" ondblclick="this.classList.add('border')">
+    13. Doubleclick on this paragraph to place a border around this paragraph.
+  </p>
+  
+  <p onclick="document.getElementById('interactionParagraph13').classList.remove('border')">
+    14. Click here to remove the border from the previous paragraph.
+  </p>
+  
+  <p id="para15" 
+     onmouseover="this.style.backgroundColor='green'" 
+     onmouseout="this.style.backgroundColor=''">
+    15. Mouseover this paragraph to turn its background color to green. When you mouseoff the paragraph return it to its normal color.
+  </p>
+</body>
+</html>
