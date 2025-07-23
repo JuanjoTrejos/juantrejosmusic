@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>WDV2221 Intro Javascript</title>
+</meta></head>
+
+<style>
+body {background-color:#ddeeda;
+}
+
+.highlightTitle	{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-style:italic;
+	font-size:14px;
+	text-decoration:underline;
+	color:#096;
+}
+
+</style>
+<body>
+  <h1>WDV2221 Intro JavaScript</h1>
+  <h2>Unit-10 Assignment - Inventory Management with JSON</h2>
+
+  <h3>Problem 1</h3>
+  <p>Display the item information by converting the JSON string to an Object and referencing the object properties.</p>
+  <p id="problem1Output"></p>
+
+  <script>
+    // Problem 1: Parse and display JSON object
+    var item = '{"itemName":"Book", "inventoryCount":10}';
+    var itemObj = JSON.parse(item);
+    document.getElementById("problem1Output").innerHTML = 
+      "Item: " + itemObj.itemName + "<br>Amount in Stock: " + itemObj.inventoryCount;
+  </script>
+
+  <h3>Problem 2</h3>
+  <p>
+    1. Create a function to pull data from the form and convert it to a JSON string.<br>
+    2. Display the string in the output paragraph. Example: '{"itemName":"Book", "inventoryCount":10}'
+  </p>
+
+  <form onsubmit="return false;">
+    <p>Item <input type="text" id="newItemName" /></p>
+    <p>Count <input type="text" id="count" /></p>
+    <p><input type="button" value="Convert to JSON String" onclick="convertToJSON()" /></p>
+    <p id="output"></p>
+  </form>
+
+  <script>
+    function convertToJSON() {
+      var itemName = document.getElementById("newItemName").value;
+      var count = parseInt(document.getElementById("count").value);
+
+      // Create JSON object and stringify it
+      var jsonObject = {
+        itemName: itemName,
+        inventoryCount: count
+      };
+
+      var jsonString = JSON.stringify(jsonObject);
+      document.getElementById("output").innerText = jsonString;
+    }
+  </script>
+</body>
+</html>
