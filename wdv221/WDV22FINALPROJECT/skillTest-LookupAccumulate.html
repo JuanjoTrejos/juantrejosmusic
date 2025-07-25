@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WDV221 Intro Javascript</title>
+
+
+<!-- Extra Credit Style: highlight top scorer -->
+<style>
+  .highlight {
+    font-weight: bold;
+    color: green;
+  }
+</style>
+
+<script>
+  var teamNames = ["Bears", "Browns", "Reds"];
+  var teamScores = [3, 7, 4];
+
+  // No change: original lookup function
+  function lookupNames(inNames) {
+    for (var j = 0; j < teamNames.length; j++) {
+      if (inNames == teamNames[j]) {
+        return j;
+      }
+    }
+    return -1; // MODIFIED: Changed from returning string to -1 for easier logic check
+  }
+
+  // No change
+  function getScore() {
+    return parseInt(document.getElementById("inputScore").value);
+  }
+
+  // MODIFIED: Now adds new teams and updates scores
+  // CALLS: displayAllTeams() (added function)
+  function processTeamNames() {
+    document.getElementById("outputResponse").innerHTML = "";
+
+    var inTeamName = document.getElementById("inputName").value.trim();
+    var inTeamScore = getScore();
+
+    // Input validation for score
+    if (isNaN(inTeamScore)) {
+      document.getElementById("outputResponse").innerHTML = "Invalid score.";
+      return;
+    }
+
+    var lookupIndex = lookupNames(inTeamName);
+
+    if (lookupIndex === -1) {
+      // ADDED: Team not found, so we add it
+      teamNames.push(inTeamName);
+      teamScores.push(inTeamScore);
+      document.getElementById("outputResponse").innerHTML = inTeamName + " added with score " + inTeamScore;
+    } else {
+      // MODIFIED: Update existing team score
+      teamScores[lookupIndex] += inTeamScore;
+      document.getElementById("outputResponse").innerHTML = inTeamName + " " + teamScores[lookupIndex];
+    }
+
+    displayAllTeams(); // ADDED: Display updated scores
+  }
+
+  // ADDED FUNCTION: Show all teams & scores, sorted descending, highlight highest
+  function displayAllTeams() {
+    let displayArea = document.getElementById("allTeams");
+    let tempTeams = [];
+
+    // Combine names and scores into array of objects
+    for (let i = 0; i < teamNames.length; i++) {
+      tempTeams.push({ name: teamNames[i], score: teamScores[i] });
+    }
+
+    // Extra Credit: sort from high to low score
+    tempTeams.sort((a, b) => b.score - a.score);
+    let highestScore = tempTeams[0].score;
+
+    // Generate display list
+    let output = "<ul>";
+    for (let i = 0; i < tempTeams.length; i++) {
+      let className = (tempTeams[i].score === highestScore) ? "highlight" : ""; // Highlight top scorer
+      output += `<li class="${className}">${tempTeams[i].name}: ${tempTeams[i].score}</li>`;
+    }
+    output += "</ul>";
+
+    displayArea.innerHTML = output;
+  }
+
+  // ADDED FUNCTION: Reset form and clear status
+  function resetForm() {
+    document.getElementById("outputResponse").innerHTML = "";
+    document.getElementById("form1").reset();
+  }
+</script>
+
+</head>
+
+<body>
+<h1>WDV221 Intro Javascript</h1>
+<h2>Skill Test - Lookup and Accumulate Arrays</h2>
+
+<!-- MODIFIED: Added id="form1" for reset function targeting -->
+<form name="form1" id="form1" method="post" action="">
+  <fieldset>
+    <legend>Team Scores</legend>
+    <p>
+      <label>Team Name: 
+        <input type="text" name="inputName" id="inputName">
+      </label>
+    </p>
+    <p>
+      <label>Team Score: 
+        <input type="text" name="inputScore" id="inputScore">
+      </label>
+    </p>
+    <p>
+      Current Status: <span id="outputResponse"></span>
+    </p>
+    <p>
+      <input type="button" value="Process Team Names" onClick="processTeamNames()">
+      <input type="button" value="Reset" onClick="resetForm()"> <!-- MODIFIED: Reset now clears status -->
+      <input type="button" value="Display All Scores" onClick="displayAllTeams()"> <!-- ADDED -->
+    </p>
+  </fieldset>
+</form>
+
+<!-- ADDED: Display area for list of all teams and scores -->
+<div>
+  <h3>All Teams and Scores:</h3>
+  <div id="allTeams"></div>
+</div>
+
+</body>
+</html>

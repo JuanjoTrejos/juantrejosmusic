@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WDV221 Intro Javascript</title>
+  <script>
+    var products = ["Garden Trowel", "Yard Spade", "Planting Spade"];
+    var productNumber = ["gt200", "yard-1", "plant-4"];
+    var selectionFactors = ["Price", "Quality", "Reviews", "Pictures"];
+    var references = ["Field and Stream", "Home and Garden", "Plant Life"];
+
+    window.onload = function () {
+      var selectMenu = document.getElementById("selectProduct");
+      for (let i = 0; i < products.length; i++) {
+        var option = document.createElement("option");
+        option.text = products[i];
+        option.value = productNumber[i];
+        selectMenu.add(option);
+      }
+
+      var insertPoint = document.getElementById("insertHere");
+
+      // Radio buttons for selectionFactors
+      var radioHeader = document.createElement("p");
+      radioHeader.innerHTML = "2. Please choose the primary factor in why you purchased our product:";
+      insertPoint.appendChild(radioHeader);
+
+      for (let i = 0; i < selectionFactors.length; i++) {
+        let label = document.createElement("label");
+        let radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "factor";
+        radio.value = selectionFactors[i];
+        label.appendChild(radio);
+        label.appendChild(document.createTextNode(" " + selectionFactors[i]));
+        insertPoint.appendChild(label);
+        insertPoint.appendChild(document.createElement("br"));
+      }
+
+      // Checkboxes for references
+      var checkHeader = document.createElement("p");
+      checkHeader.innerHTML = "3. How did you hear about us? Please select all that apply:";
+      insertPoint.appendChild(checkHeader);
+
+      for (let i = 0; i < references.length; i++) {
+        let label = document.createElement("label");
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = "reference";
+        checkbox.value = references[i];
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(" " + references[i]));
+        insertPoint.appendChild(label);
+        insertPoint.appendChild(document.createElement("br"));
+      }
+
+      // JSON output
+      var specialItem = '{"itemName":"Magic Beans", "price":10.00, "inventoryCount":1, "isDiscontinued":true}';
+      var item = JSON.parse(specialItem);
+      var output = `
+        <p>Item Name: ${item.itemName}</p>
+        <p>Price: $${item.price}</p>
+        <p>Count: ${item.inventoryCount}</p>
+        <p>Limited Time Offer: ${item.isDiscontinued}</p>
+      `;
+      var container = document.createElement("div");
+      container.innerHTML = output;
+      document.getElementById("specialOffer").appendChild(container);
+
+      // Submit button handler
+      document.getElementById("form1").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent actual submission
+
+        // Get selected product
+        const selectedProduct = selectMenu.options[selectMenu.selectedIndex].text;
+
+        // Get selected radio button
+        const selectedFactor = document.querySelector('input[name="factor"]:checked');
+        const factorValue = selectedFactor ? selectedFactor.value : "None selected";
+
+        // Get selected checkboxes
+        const selectedReferences = Array.from(document.querySelectorAll('input[name="reference"]:checked'))
+          .map(cb => cb.value);
+
+        // Output result
+        const resultDiv = document.getElementById("formOutput");
+        resultDiv.innerHTML = `
+          <h3>Form Submission Summary:</h3>
+          <p><strong>Product Chosen:</strong> ${selectedProduct}</p>
+          <p><strong>Primary Factor:</strong> ${factorValue}</p>
+          <p><strong>Heard About Us From:</strong> ${selectedReferences.length > 0 ? selectedReferences.join(", ") : "None selected"}</p>
+        `;
+      });
+    };
+  </script>
+</head>
+<body>
+  <h1>WDV221 Intro Javascript</h1>
+  <h2>Skill Test - Loops and Arrays</h2>
+
+  <form name="form1" id="form1" method="post">
+    <fieldset>
+      <legend>Your Input Matters</legend>
+
+      <label>1. Which product did you purchase?
+        <select name="selectProduct" id="selectProduct"></select>
+      </label>
+      <br><br>
+
+      <div id="insertHere"></div>
+
+      <br>
+      <input type="submit" name="button" id="button" value="Submit">
+      <input type="reset" name="button2" id="button2" value="Reset">
+    </fieldset>
+  </form>
+
+  <div id="formOutput" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;"></div>
+
+  <h2>4. Special Item Offer!</h2>
+  <div id="specialOffer"></div>
+
+  <h3>Instructions:</h3>
+  <p>1. Use the products array and the productNumber array to dynamically populate the select menu. Include the productNumbers as value attributes.</p>
+  <p>2. Use the selectionFactors array to dynamically create a set of radio buttons.</p>
+  <p>3. Use the references array to dynamically create a set of check boxes.</p>
+  <p>4. Convert the specialItem JSON String to a JSON Object and then display the data under the "4. Special Item Offer!" header.</p>
+</body>
+</html>
